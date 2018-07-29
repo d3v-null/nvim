@@ -7,6 +7,8 @@ command! PU PlugUpdate | PlugUpgrade
 call plug#begin()
 
 Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
+Plug 'mgee/lightline-bufferline'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -32,6 +34,8 @@ let g:lightline.active = {
       \   'right': [ [ 'syntastic', 'lineinfo' ],
       \             ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ }
+let g:lightline.tabline = {'left': [['tabs', 'buffers']], 'right': [['close']]}
+" let g:lightline.tab = {'active': ['tabnum'], 'inactive': ['tabnum']}
 let g:lightline.component_function = {
       \   'fugitive': 'LightlineFugitive',
       \   'filename': 'LightlineFilename',
@@ -43,9 +47,11 @@ let g:lightline.component_function = {
       \ }
 let g:lightline.component_expand = {
       \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'buffers': 'lightline#bufferline#buffers' 
       \ }
 let g:lightline.component_type = {
       \   'syntastic': 'error',
+      \   'buffers': 'tabsel'
       \ }
 
 function! LightlineModified()
@@ -159,4 +165,11 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 let g:syntastic_force_overwrite_statusline = 0
 
-
+" Bufferline
+set showtabline=2
+let g:bufferline_echo = 0
+let g:bufferline_modified = ' +'
+let g:bufferline_show_bufnr = 0
+let g:bufferline_separator = ' '
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
