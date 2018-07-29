@@ -83,7 +83,7 @@ function! LightlineFugitive()
 endfunction
 
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
+  return expand('%:t') !=# '' ? expand('%:f') : '[No Name]'
 endfunction
 
 function! LightlineFileformat()
