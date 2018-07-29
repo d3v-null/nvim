@@ -1,27 +1,28 @@
 " Global config (shared between nvim and nvim gui) goes here
 
 " Show the filename in the window titlebar
-set title                                                                      
+set title
 " Line numbers are good
-set number                                                                     
+set number
 " show numbers relative to current line
-set relativenumber								
+set relativenumber
 " Store lots of :cmdline history
-set history=500                                                                
+set history=500
 " Show the (partial) command as it’s being typed
-set showcmd                                                                    
-                                                             
+set showcmd
+
 " Enable mouse usage
-set mouse=a                                                                    
+set mouse=a
 " Hide buffers in background
-set hidden                                                                     
+set hidden
 " neosnippets conceal marker
-set conceallevel=2 concealcursor=i                                             
+set conceallevel=2 concealcursor=i
 " Set up new vertical splits positions
-set splitright                                                                 
+set splitright
 " Set up new horizontal splits positions
-set splitbelow                                                                 
+set splitbelow
 " Centralize backups, swapfiles and undo history
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
 set backupdir=~/.nvim/backups
 set directory=~/.nvim/swaps
 if exists("&undodir")
@@ -35,21 +36,21 @@ set secure
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Appearance 
+" => Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set background to dark
-set background=dark                                                            
+set background=dark
 " Colours show up properly in terminal
-set termguicolors 								
+set termguicolors
 " don't need showmode because of the lightline plugin
-set noshowmode            
+set noshowmode
 " Set cursor blinking rate
-set guicursor=a:blinkon500-blinkwait500-blinkoff500                            
+set guicursor=a:blinkon500-blinkwait500-blinkoff500
 " Highlight current line
-set cursorline                                                         
+set cursorline
+" Highlight column 80
+set colorcolumn=80
 " Show “invisible” characters
 set listchars=eol:¬,tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:_
 set list
@@ -57,24 +58,53 @@ set list
 syntax on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Search options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => Search / Replace options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set global flag for search and replace
-set gdefault                                                                   
+set gdefault
 " Smart case search if there is uppercase
-set smartcase                                                                  
+set smartcase
 " case insensitive search
-set ignorecase                                                                 
+set ignorecase
 " Highlight matching bracket
-set showmatch                                                                  
+set showmatch
 " Allow recursive search of directories
-set path+=**                                                                   
+set path+=**
 "Show substitute changes immidiately at it is typed
-set inccommand=nosplit                                                         
+set inccommand=nosplit
 highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => whitespace options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Auto reload after config change
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => showmaps
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:ShowMaps()
+  let old_reg = getreg("a")          " save the current content of register a
+  let old_reg_type = getregtype("a") " save the type of the register as well
+try
+  redir @a                           " redirect output to register a
+  " Get the list of all key mappings silently, satisfy "Press ENTER to continue"
+  silent map | call feedkeys("\<CR>")
+  redir END                          " end output redirection
+  vnew                               " new buffer in vertical window
+  put a                              " put content of register
+  " Sort on 4th character column which is the key(s)
+  %!sort -k1.4,1.4
+finally                              " Execute even if exception is raised
+  call setreg("a", old_reg, old_reg_type) " restore register a
+endtry
+endfunction
+com! ShowMaps call s:ShowMaps()      " Enable :ShowMaps to call the function
+
+nnoremap \m :ShowMaps<CR>            " Map keys to call the function
