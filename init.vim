@@ -7,6 +7,9 @@ if !filereadable(g:nvim_path . '/autoload/plug.vim')
     \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+" more accessible leader
+let mapleader = " "
+
 " Load the rest of the configuration:
 execute 'source ' . g:nvim_path . '/plugins.vim'
 execute 'source ' . g:nvim_path . '/global.vim'

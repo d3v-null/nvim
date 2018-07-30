@@ -16,13 +16,15 @@ Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
-" Theme
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Theme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 colorscheme onedark
 
-
-" Lightline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Lightline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ }
@@ -165,7 +167,11 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 let g:syntastic_force_overwrite_statusline = 0
 
-" Bufferline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Bufferline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" used to make bufferline display correctly in lightline
 set showtabline=2
 let g:bufferline_echo = 0
 let g:bufferline_modified = ' +'
