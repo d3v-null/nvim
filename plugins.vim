@@ -13,6 +13,20 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'd11wtq/ctrlp_bdelete.vim'
 
+" Disabled NCM2 because of backspace issue, replace with deoplete
+" Plug 'ncm2/ncm2'
+" ncm2 requires nvim-yarp
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+
+if has("nvim") 
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
+" Vim completion
+Plug 'Shougo/neco-vim'
+" Haskell completion
+Plug 'eagletmt/neco-ghc'
+
 " Theme
 Plug 'joshdick/onedark.vim'
 
@@ -211,3 +225,16 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call ctrlp_bdelete#init()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NCM2 - Neovim Completion Manager
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+" set shortmess+=c
+" au TextChangedI * call(l ncm2#auto_trigger()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Deoplete - Completion 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1

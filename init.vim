@@ -15,7 +15,10 @@ execute 'source ' . g:nvim_path . '/plugins.vim'
 execute 'source ' . g:nvim_path . '/global.vim'
 execute 'source ' . g:nvim_path . '/keys.vim'
 
+" DONE:
+" x Easy way to bufdelete netrw buffers
+" x completion with Deoplete
 " TODO:
-" - completion with NCM2
+" - fix backspace issue and enable completion with NCM2
 " - numbered buffers in bufferline
-" - Easy way to bufdelete netrw buffers
+" - surrounds

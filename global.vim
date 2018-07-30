@@ -25,7 +25,7 @@ set novisualbell
 set timeoutlen=500
 " disable code folding
 set nofoldenable
-
+set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Backup / Swap / Undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
