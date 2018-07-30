@@ -9,6 +9,7 @@ call plug#begin()
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'mgee/lightline-bufferline'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -19,8 +20,25 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Theme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on
 colorscheme onedark
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NetRW
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" when browsing, <cr> will open the file by vertically splitting window first
+" However this messes with P as well so ignore
+" let g:netrw_browse_split = 3
+" Sort by directories first, then files, other more complex sorting is
+" disabled
+let g:netrw_sort_sequence = '[\/]$,*,'
+" Disable the banner which doesn't show anything useful anyway
+let g:netrw_banner = 0
+" specify initial size of new windows
+let g:netrw_winsize = -25
+" comma separated pattern list for hiding files
+let g:netrw_list_hide = g:netrw_gitignore#Hide().'.*\.swp$'
+" don't show hidden files (press a to toggle)
+let g:netrw_hide = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Lightline
@@ -170,7 +188,6 @@ let g:syntastic_force_overwrite_statusline = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bufferline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " used to make bufferline display correctly in lightline
 set showtabline=2
 let g:bufferline_echo = 0
@@ -179,3 +196,10 @@ let g:bufferline_show_bufnr = 0
 let g:bufferline_separator = ' '
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CtrlP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
