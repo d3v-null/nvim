@@ -7,7 +7,7 @@ set title
 " Enable mouse usage
 set mouse=a
 " Hide buffers in background (a buffer becomes hidden when it is abandoned)
-set hidden
+" set hidden
 " neosnippets conceal marker
 set conceallevel=2 concealcursor=i
 " Set up new vertical splits positions
@@ -23,6 +23,8 @@ set nostartofline
 set noerrorbells
 set novisualbell
 set timeoutlen=500
+" disable code folding
+set nofoldenable
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Backup / Swap / Undo
@@ -147,4 +149,11 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Other options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" delete netrw when not focussed
+autocmd FileType netrw setl bufhidden=wipe
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
