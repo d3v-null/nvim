@@ -15,3 +15,7 @@ execute 'source ' . g:nvim_path . '/plugins.vim'
 execute 'source ' . g:nvim_path . '/global.vim'
 execute 'source ' . g:nvim_path . '/keys.vim'
 
+" TODO:
+" - completion with NCM2
+" - numbered buffers in bufferline
+" - Easy way to bufdelete netrw buffers

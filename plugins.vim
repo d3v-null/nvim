@@ -10,6 +10,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'mgee/lightline-bufferline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'qpkorr/vim-bufkill'
+Plug 'd11wtq/ctrlp_bdelete.vim'
 
 " Theme
 Plug 'joshdick/onedark.vim'
@@ -200,6 +202,12 @@ let g:bufferline_active_buffer_right = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => CtrlP_bdelete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call ctrlp_bdelete#init()
 

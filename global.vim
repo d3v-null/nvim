@@ -4,17 +4,9 @@
  
 " Show the filename in the window titlebar
 set title
-" Line numbers are good
-set number
-" show numbers relative to current line
-set relativenumber
-" Store lots of :cmdline history
-set history=500
-" Show the (partial) command as it’s being typed
-set showcmd
 " Enable mouse usage
 set mouse=a
-" Hide buffers in background
+" Hide buffers in background (a buffer becomes hidden when it is abandoned)
 set hidden
 " neosnippets conceal marker
 set conceallevel=2 concealcursor=i
@@ -27,10 +19,16 @@ set exrc
 set secure
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set timeoutlen=500
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Backup / Swap / Undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Store lots of :cmdline history
+set history=500
 " Centralize backups, swapfiles and undo history
 silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
 set backupdir=~/.nvim/backups
@@ -61,6 +59,20 @@ set listchars=eol:¬,tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:_
 set list
 " Syntax highlightning
 syntax on
+" Line numbers are good
+set number
+" show numbers relative to current line
+set relativenumber
+" Show the (partial) command as it’s being typed
+set showcmd
+" Last window will always have a status line
+set laststatus=2
+" Always show current position
+set ruler
+" Height of the command bar
+" set cmdheight=2
+" Highlight matching bracket
+set showmatch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search / Replace options
@@ -71,13 +83,18 @@ set gdefault
 set smartcase
 " case insensitive search
 set ignorecase
-" Highlight matching bracket
-set showmatch
 " Allow recursive search of directories
 set path+=**
 "Show substitute changes immidiately at it is typed
 set inccommand=nosplit
 highlight Search cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=NONE guifg=NONE
+" start off searches highlighted
+set hlsearch
+" search while command is being typed
+set incsearch
+" For regular expressions turn magic on
+set magic
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => whitespace options
@@ -110,7 +127,7 @@ set sidescrolloff=15
 " list:full = When more than one match, list all matches and complete first match.
 set wildmode=list:full
 "stuff to ignore when tab completing
-set wildignore=*.o,*.obj,*~                                                     
+set wildignore=*.o,*.obj,*~
 set wildignore+=*.git*
 set wildignore+=*.meteor*
 set wildignore+=*vim/backups*
@@ -123,3 +140,11 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pyc
+if has("win16") || has("win32")
+    set wildignore+=.git\*,.hg\*,.svn\*
+else
+    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+endif
+
+
