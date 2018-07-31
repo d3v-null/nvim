@@ -43,8 +43,6 @@ if has("nvim")
 endif
 " Vim completion
 Plug 'Shougo/neco-vim'
-" Haskell completion
-Plug 'eagletmt/neco-ghc'
 
 " Syntastic
 Plug 'vim-syntastic/syntastic'
@@ -60,6 +58,12 @@ Plug 'somini/vim-autoclose'
 
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
+
+" Language:Haskell
+" GHC-mod integration
+" Plug 'eagletmt/ghcmod-vim' | Plug 'Shougo/vimproc'
+" Haskell completion
+Plug 'eagletmt/neco-ghc'
 
 
 " Theme
@@ -292,7 +296,7 @@ let g:syntastic_mode_map.active_filetypes = [
 " Skip check on :wq, :x, :ZZ etc
 let g:syntastic_check_on_wq = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_auto_loc_list = 1
 
 augroup AutoSyntastic
@@ -302,3 +306,4 @@ augroup AutoSyntastic
         \ " autocmd BufWritePost <buffer> :call lightline#update()"
 augroup END
 
+let g:syntastic_haskell_checkers = ['hlint']
