@@ -52,6 +52,16 @@ Plug 'vim-syntastic/syntastic'
 Plug 'syngan/vim-vimlint'
 Plug 'ynkdir/vim-vimlparser'
 
+" Universal commenting with toggle, motions, embedded syntax and more
+Plug 'tomtom/tcomment_vim'
+
+" Autoclose (, " etc
+Plug 'somini/vim-autoclose'
+
+" Handle surround chars like ''
+Plug 'tpope/vim-surround'
+
+
 " Theme
 Plug 'joshdick/onedark.vim'
 
