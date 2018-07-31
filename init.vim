@@ -14,6 +14,7 @@ let g:mapleader = " "
 execute 'source ' . g:nvim_path . '/plugins.vim'
 execute 'source ' . g:nvim_path . '/global.vim'
 execute 'source ' . g:nvim_path . '/keys.vim'
+execute 'source ' . g:nvim_path . '/filetypes.vim'
 
 " DONE:
 " x Easy way to bufdelete netrw buffers
