@@ -30,6 +30,23 @@ map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Searching
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Command mode related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart mappings on the command line
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " default mapping is a duplicate, <c-b> & <c-f> ~= <c-u> & <c-d>
@@ -38,12 +55,10 @@ let g:ctrlp_map = '<c-f>'
 map <c-b> :CtrlPBuffer<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Searching
+" => Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+map <leader>se :Errors<cr>
+map <leader>sm :SyntasticToggleMode<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Unused & Duplicate keys
@@ -98,7 +113,16 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
 function! VisualSelection(direction, extra_filter) range
+    if a:extra_filter || a:firstline || a:lastline
+        " unused arguments
+    endif
     let l:saved_reg = @"
     execute "normal! vgvy"
 

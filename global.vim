@@ -1,3 +1,4 @@
+scriptencoding utf-8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Global config (shared between nvim and nvim gui) goes here
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,7 +18,7 @@ set splitbelow
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
-" Don’t reset cursor to start of line when moving around.
+" Don't reset cursor to start of line when moving around.
 set nostartofline
 " No annoying sound on errors
 set noerrorbells
@@ -32,13 +33,18 @@ set backspace=indent,eol,start
 " Store lots of :cmdline history
 set history=500
 " Centralize backups, swapfiles and undo history
-silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+silent !mkdir -p ~/.config/nvim/{backups,swaps,undo} > /dev/null 2>&1
 set backupdir=~/.nvim/backups
 set directory=~/.nvim/swaps
-if exists("&undodir")
-	set undodir=~/.nvim/undo
-endif
-" Don’t create backups when editing files in certain directories
+try
+    if exists("&undodir")
+        set undodir=~/.nvim/undo
+    endif    
+    set undofile
+catch
+endtry
+
+" Don't create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,7 +62,7 @@ set guicursor=a:blinkon500-blinkwait500-blinkoff500
 set cursorline
 " Highlight column 80
 set colorcolumn=80
-" Show “invisible” characters
+" Show 'invisible' characters
 set listchars=eol:¬,tab:▸\ ,trail:·,extends:»,precedes:«,nbsp:_
 set list
 " Syntax highlightning
@@ -152,8 +158,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Other options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" delete netrw when not focussed
-autocmd FileType netrw setl bufhidden=wipe
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 

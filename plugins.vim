@@ -1,14 +1,34 @@
+scriptencoding utf-8
 " Config for plugins & Themes
 
 " Command to update plugins & vim-plug:
 command! PU PlugUpdate | PlugUpgrade
 
+" Plugins to be disabled
+" Create empty list with names of disabled plugins if not defined
+let g:plugs_disabled = get(g:, 'plug_disabled', [])
+
+" Trim and extract repo name
+" Same substitute/fnamemodify args as vim-plug itself
+" https://github.com/junegunn/vim-plug/issues/469#issuecomment-226965736
+function! s:plugs_disable(repo)
+    let repo = substitute(a:repo, '[\/]\+$', '', '')
+    let name = fnamemodify(repo, ':t:s?\.git$??')
+    call add(g:plugs_disabled, name)
+endfunction
+
+" Append to list of repo names to be disabled just like they're added
+" UnPlug 'junegunn/vim-plug'
+command! -nargs=1 -bar UnPlug call s:plugs_disable(<args>)
 
 call plug#begin()
 
+" A pretty statusline, bufferline integration
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
+" TODO: is this necessary
 Plug 'mgee/lightline-bufferline'
+" Fuzzy finder (files, mru, etc)
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'd11wtq/ctrlp_bdelete.vim'
@@ -18,7 +38,6 @@ Plug 'd11wtq/ctrlp_bdelete.vim'
 " ncm2 requires nvim-yarp
 " Plug 'roxma/nvim-yarp'
 " Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-
 if has("nvim") 
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
@@ -27,9 +46,18 @@ Plug 'Shougo/neco-vim'
 " Haskell completion
 Plug 'eagletmt/neco-ghc'
 
+" Syntastic
+Plug 'vim-syntastic/syntastic'
+" Vim linter
+Plug 'syngan/vim-vimlint'
+Plug 'ynkdir/vim-vimlparser'
+
 " Theme
 Plug 'joshdick/onedark.vim'
 
+" Remove disabled plugins from installation/initialization
+" https://vi.stackexchange.com/q/13471/5070
+call filter(g:plugs, 'index(g:plugs_disabled, v:key) == -1')
 
 call plug#end()
 
@@ -44,17 +72,19 @@ colorscheme onedark
 " when browsing, <cr> will open the file by vertically splitting window first
 " However this messes with P as well so ignore
 " let g:netrw_browse_split = 3
+" specify initial size of new windows
+" let g:netrw_winsize = -25
 " Sort by directories first, then files, other more complex sorting is
 " disabled
 let g:netrw_sort_sequence = '[\/]$,*,'
 " Disable the banner which doesn't show anything useful anyway
 let g:netrw_banner = 0
-" specify initial size of new windows
-let g:netrw_winsize = -25
 " comma separated pattern list for hiding files
 let g:netrw_list_hide = g:netrw_gitignore#Hide().'.*\.swp$'
 " don't show hidden files (press a to toggle)
 let g:netrw_hide = 1
+" delete netrw when not focussed
+autocmd FileType netrw setl bufhidden=wipe
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Lightline
@@ -125,7 +155,7 @@ function! LightlineFugitive()
 endfunction
 
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? expand('%:f') : '[No Name]'
+  return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
 
 function! LightlineFileformat()
@@ -169,6 +199,8 @@ let g:ctrlp_status_func = {
   \ }
 
 function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  if a:focus || a:byfname || a:marked  
+  endif
   let g:lightline.ctrlp_regex = a:regex
   let g:lightline.ctrlp_prev = a:prev
   let g:lightline.ctrlp_item = a:item
@@ -177,24 +209,21 @@ function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
 endfunction
 
 function! CtrlPStatusFunc_2(str)
+    if a:str
+        " unused variable
+    endif
   return lightline#statusline(0)
 endfunction
 
 let g:tagbar_status_func = 'TagbarStatusFunc'
 
 function! TagbarStatusFunc(current, sort, fname, ...) abort
+    if a:current || a:sort
+        " unused variable
+    endif
     let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
-
-" augroup AutoSyntastic
-"   autocmd!
-"   autocmd BufWritePost *.c,*.cpp call s:syntastic()
-" augroup END
- function! s:syntastic()
-   SyntasticCheck
-   call lightline#update()
- endfunction
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
@@ -238,3 +267,28 @@ call ctrlp_bdelete#init()
 " => Deoplete - Completion 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic - Syntax Checker 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Automatic checking for active, only when :SyntasticCheck for passive
+" https://github.com/timss/vimconf/issues/9
+let g:syntastic_mode_map = get(g:, 'syntastic_mode_map', {
+    \ 'mode': 'passive'})
+let g:syntastic_mode_map.active_filetypes = [
+    \ 'c', 'cpp', 'perl', 'python', 'vim', 'haskell']
+
+
+" Skip check on :wq, :x, :ZZ etc
+let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 1
+
+augroup AutoSyntastic
+    autocmd!
+    execute "autocmd FileType " .
+        \ join(g:syntastic_mode_map["active_filetypes"], ",") .
+        \ " autocmd BufWritePost <buffer> :call lightline#update()"
+augroup END
+
