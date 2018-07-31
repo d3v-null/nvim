@@ -41,14 +41,11 @@ Plug 'd11wtq/ctrlp_bdelete.vim'
 if has("nvim") 
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
-" Vim completion
-Plug 'Shougo/neco-vim'
 
 " Syntastic
 Plug 'vim-syntastic/syntastic'
-" Vim linter
-Plug 'syngan/vim-vimlint'
-Plug 'ynkdir/vim-vimlparser'
+
+Plug 'sbdchd/neoformat'
 
 " Universal commenting with toggle, motions, embedded syntax and more
 Plug 'tomtom/tcomment_vim'
@@ -59,14 +56,20 @@ Plug 'tomtom/tcomment_vim'
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
 
+" Language:Vim
+" Vim linter
+Plug 'syngan/vim-vimlint'
+Plug 'ynkdir/vim-vimlparser'
+" Vim completion
+Plug 'Shougo/neco-vim'
+
 " Language:Haskell
 " GHC-mod integration
 " Plug 'eagletmt/ghcmod-vim' | Plug 'Shougo/vimproc'
 " Haskell completion
 Plug 'eagletmt/neco-ghc'
 
-
-" Theme
+" Theme:
 Plug 'joshdick/onedark.vim'
 
 " Remove disabled plugins from installation/initialization
@@ -282,7 +285,6 @@ call ctrlp_bdelete#init()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic - Syntax Checker 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -291,7 +293,7 @@ let g:deoplete#enable_at_startup = 1
 let g:syntastic_mode_map = get(g:, 'syntastic_mode_map', {
     \ 'mode': 'passive'})
 let g:syntastic_mode_map.active_filetypes = [
-    \ 'c', 'cpp', 'perl', 'python', 'vim', 'haskell']
+    \ 'c', 'cpp', 'perl', 'python', 'vim', 'haskell', 'ruby']
 
 
 " Skip check on :wq, :x, :ZZ etc
@@ -307,5 +309,12 @@ augroup AutoSyntastic
         \ " autocmd BufWritePost <buffer> :call lightline#update()"
 augroup END
 
+" hdevtools wouldn't work on my machine
 let g:syntastic_haskell_checkers = ['hlint']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neoformat - Code formatter 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
