@@ -54,7 +54,7 @@ Plug 'ynkdir/vim-vimlparser'
 Plug 'tomtom/tcomment_vim'
 
 " Autoclose (, " etc
-Plug 'somini/vim-autoclose'
+" Plug 'somini/vim-atoclose'
 
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
@@ -282,6 +282,7 @@ call ctrlp_bdelete#init()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic - Syntax Checker 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -307,3 +308,4 @@ augroup AutoSyntastic
 augroup END
 
 let g:syntastic_haskell_checkers = ['hlint']
+
