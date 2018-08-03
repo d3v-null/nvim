@@ -52,6 +52,8 @@ Plug 'tomtom/tcomment_vim'
 
 " Autoclose (, " etc
 " Plug 'somini/vim-atoclose'
+" Auto insert end statements
+Plug 'tpope/vim-endwise'
 
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
@@ -68,6 +70,10 @@ Plug 'Shougo/neco-vim'
 " Plug 'eagletmt/ghcmod-vim' | Plug 'Shougo/vimproc'
 " Haskell completion
 Plug 'eagletmt/neco-ghc'
+
+" Language:Ruby
+Plug 'vim-ruby/vim-ruby'
+
 
 " Theme:
 Plug 'joshdick/onedark.vim'
@@ -317,4 +323,17 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neoformat - Code formatter 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+let g:neoformat_enabled_ruby = ['rubocop']
+let g:neoformat_ruby_rubocop = {
+    \ 'exe': 'rubocop',
+    \ 'args': [
+    \   '--auto-correct', 
+    \   '--stdin', 
+    \   '"%:p"',
+    \	'2>/dev/null',
+	\	'|',
+	\	'sed "1,/^====================$/d"'],
+    \ 'replace' : 0,
+    \ 'stdin': 1,
+    \ 'no_append': 1,
+    \ }
