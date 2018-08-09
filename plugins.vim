@@ -323,7 +323,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neoformat - Code formatter 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neoformat_enabled_ruby = ['rubocop']
+let g:neoformat_enabled_ruby = ['ruby-beautify', 'rubocop']
+
 let g:neoformat_ruby_rubocop = {
     \ 'exe': 'rubocop',
     \ 'args': [
@@ -331,8 +332,9 @@ let g:neoformat_ruby_rubocop = {
     \   '--stdin', 
     \   '"%:p"',
     \	'2>/dev/null',
-	\	'|',
-	\	'sed "1,/^====================$/d"'],
+    \	'|',
+    \	'sed "1,/^====================$/d"'
+    \ ],
     \ 'replace' : 0,
     \ 'stdin': 1,
     \ 'no_append': 1,
