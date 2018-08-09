@@ -1,4 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => TODO:
+" - toggle relative line numbers
+" - toggle paste
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Handy Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -14,6 +19,18 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" insert & normal mode home and end
+inoremap <C-A>		<Home>
+inoremap <C-E>		<End>
+nnoremap <C-A>		<Home>
+nnoremap <C-E>		<End>
+
+" TODO: Make scope of undo more granular
+" These aren't working because they mess with deoplete
+" imap <CR> <C-G>u<CR>
+" imap <up> <C-G>u<up>
+" imap <down> <C-G>u<down>
+" inoremap <C-m> <C-G>u<C-m>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
