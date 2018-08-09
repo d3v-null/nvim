@@ -33,6 +33,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'd11wtq/ctrlp_bdelete.vim'
 
+Plug 'sheerun/vim-polyglot'
+
 " Disabled NCM2 because of backspace issue, replace with deoplete
 " Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
@@ -58,6 +60,9 @@ Plug 'tpope/vim-endwise'
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
 
+" Easy tabular formatting
+Plug 'godlygeek/tabular'
+
 " Language:Vim
 " Vim linter
 Plug 'syngan/vim-vimlint'
@@ -74,6 +79,12 @@ Plug 'eagletmt/neco-ghc'
 " Language:Ruby
 Plug 'vim-ruby/vim-ruby'
 
+" Language:Markdown
+Plug 'plasticboy/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+
+" Language: Python
+Plug 'zchee/deoplete-jedi'
 
 " Theme:
 Plug 'joshdick/onedark.vim'
@@ -339,3 +350,10 @@ let g:neoformat_ruby_rubocop = {
     \ 'stdin': 1,
     \ 'no_append': 1,
     \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Language: Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_conceal = 0
+
