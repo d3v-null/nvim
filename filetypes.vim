@@ -9,7 +9,7 @@ endif
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 
 if has("autocmd")
     autocmd FileType javascript setlocal nocindent
@@ -18,7 +18,8 @@ endif
 
 """"""""""""""""""""""""""""""
 " => Ruby section
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 if has("autocmd")
     autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 endif
+

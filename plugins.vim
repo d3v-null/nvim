@@ -33,7 +33,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'd11wtq/ctrlp_bdelete.vim'
 
-Plug 'sheerun/vim-polyglot'
+Plug 'prurigro/vim-polyglot-darkcloud'
+" Plug 'sheerun/vim-polyglot'
 
 " Disabled NCM2 because of backspace issue, replace with deoplete
 " Plug 'ncm2/ncm2'
@@ -80,11 +81,23 @@ Plug 'eagletmt/neco-ghc'
 Plug 'vim-ruby/vim-ruby'
 
 " Language:Markdown
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 " Plug 'gabrielelana/vim-markdown'
 
 " Language: Python
 Plug 'zchee/deoplete-jedi'
+
+" Language: CSV
+Plug 'chrisbra/csv.vim'
+
+" Language: Clojure
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-classpath'
+Plug 'guns/vim-clojure-highlight'
+
+" Language: parens
+Plug 'kien/rainbow_parentheses.vim'
 
 " Theme:
 Plug 'joshdick/onedark.vim'
@@ -357,3 +370,10 @@ let g:neoformat_ruby_rubocop = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_conceal = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Parens
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

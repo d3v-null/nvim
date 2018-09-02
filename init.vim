@@ -20,6 +20,7 @@ execute 'source ' . g:nvim_path . '/filetypes.vim'
 " x Easy way to bufdelete netrw buffers
 " x completion with Deoplete
 " TODO:
+" - auto remove trailing whitespace on save (toggle this)
 " - auto update syntastic errors
 " - numbered buffers in bufferline
 " - surrounds
