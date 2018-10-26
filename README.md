@@ -29,10 +29,10 @@ maximizing usability.
 
 ## Keys
 
-%bull; = leader (space by default) 
+★ = leader (space by default)
 
 | key     | action                                          |
 | ------- | ----------------------------------------------- |
 | `\m`    | open a buffer containing all known key mappings |
 | `<C-k>` | deletes buffer but keeps window splits in tact  |
-| %bull;``
+| ★ `sv`  | reload config                                   |
