@@ -30,7 +30,9 @@ Plug 'bling/vim-bufferline'
 Plug 'mgee/lightline-bufferline'
 " Fuzzy finder (files, mru, etc)
 Plug 'ctrlpvim/ctrlp.vim'
+" kill a buffer without closing window
 Plug 'qpkorr/vim-bufkill'
+" kill a buffer from ctrlp 
 Plug 'd11wtq/ctrlp_bdelete.vim'
 
 Plug 'prurigro/vim-polyglot-darkcloud'
@@ -64,6 +66,12 @@ Plug 'tpope/vim-surround'
 " Easy tabular formatting
 Plug 'godlygeek/tabular'
 
+" Add 'diff' oprion when viewing swapfile
+Plug 'chrisbra/Recover.vim'
+
+" Parentheses are rainbow
+Plug 'kien/rainbow_parentheses.vim'
+
 " Language:Vim
 " Vim linter
 Plug 'syngan/vim-vimlint'
@@ -96,8 +104,8 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-classpath'
 Plug 'guns/vim-clojure-highlight'
 
-" Language: parens
-Plug 'kien/rainbow_parentheses.vim'
+" Language: Arduino
+Plug 'stevearc/vim-arduino'
 
 " Theme:
 Plug 'joshdick/onedark.vim'
