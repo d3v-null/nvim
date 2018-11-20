@@ -60,6 +60,9 @@ Plug 'tomtom/tcomment_vim'
 " Auto insert end statements
 Plug 'tpope/vim-endwise'
 
+" Use different paren management for clojure
+Plug 'kovisoft/paredit'
+
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
 
@@ -390,3 +393,4 @@ let g:vim_json_syntax_conceal=0
 " => Parens
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+let g:paredit_leader="<Space>"
