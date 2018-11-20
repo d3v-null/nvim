@@ -67,7 +67,9 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 
 " Add 'diff' oprion when viewing swapfile
-Plug 'chrisbra/Recover.vim'
+" Plug 'chrisbra/Recover.vim'
+" Diff changes for swapfiles
+Plug 'doy/vim-diff-changes'
 
 " Parentheses are rainbow
 Plug 'kien/rainbow_parentheses.vim'
