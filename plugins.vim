@@ -381,6 +381,12 @@ let g:neoformat_ruby_rubocop = {
 let g:vim_markdown_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Language: Json
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix vim-polyglot-darkcloud error when opening json
+let g:vim_json_syntax_conceal=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parens
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
