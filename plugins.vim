@@ -72,7 +72,8 @@ Plug 'godlygeek/tabular'
 Plug 'doy/vim-diff-changes'
 
 " Parentheses are rainbow
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 
 " Language:Vim
 " Vim linter
@@ -374,7 +375,6 @@ let g:neoformat_ruby_rubocop = {
     \ 'no_append': 1,
     \ }
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language: Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -383,7 +383,4 @@ let g:vim_markdown_conceal = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parens
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
