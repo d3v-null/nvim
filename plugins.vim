@@ -66,6 +66,10 @@ Plug 'kovisoft/paredit'
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
 
+
+" Select lines as text objects
+Plug 'kana/vim-textobj-user' | Plug 'kana/vim-textobj-line'
+
 " Easy tabular formatting
 Plug 'godlygeek/tabular'
 
