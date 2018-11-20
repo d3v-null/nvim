@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""
-" => Python section
+" => Python
 """"""""""""""""""""""""""""""
 if has("autocmd")
     autocmd FileType python setlocal cindent
@@ -8,7 +8,7 @@ if has("autocmd")
 endif
 
 """"""""""""""""""""""""""""""
-" => JavaScript section
+" => JavaScript
 """"""""""""""""""""""""""""""
 
 if has("autocmd")
@@ -17,9 +17,16 @@ if has("autocmd")
 endif
 
 """"""""""""""""""""""""""""""
-" => Ruby section
+" => Ruby
 """"""""""""""""""""""""""""""
 if has("autocmd")
     autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 endif
+
+""""""""""""""""""""""""""""""
+" => Clojure
+""""""""""""""""""""""""""""""
+" if has("autocmd")
+"     autocmd Filetype clojure setlocal 
+" endif
 

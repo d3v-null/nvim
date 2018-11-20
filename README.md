@@ -31,8 +31,10 @@ maximizing usability.
 
 ★ = leader (space by default)
 
-| key     | action                                          |
-| ------- | ----------------------------------------------- |
-| `\m`    | open a buffer containing all known key mappings |
-| `<C-k>` | deletes buffer but keeps window splits in tact  |
-| ★ `sv`  | reload config                                   |
+| key       | action                                          |
+| --------- | ----------------------------------------------- |
+| `\m`      | open a buffer containing all known key mappings |
+| `<C-k>`   | deletes buffer but keeps window splits in tact  |
+| `★ sv`    | reload config                                   |
+| `★ w`     | write file                                      |
+| `<C-a/e>` | insert mode home and end                        |
