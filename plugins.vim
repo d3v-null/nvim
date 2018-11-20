@@ -57,6 +57,7 @@ Plug 'tomtom/tcomment_vim'
 
 " Autoclose (, " etc
 " Plug 'somini/vim-atoclose'
+Plug 'jiangmiao/auto-pairs'
 " Auto insert end statements
 Plug 'tpope/vim-endwise'
 
