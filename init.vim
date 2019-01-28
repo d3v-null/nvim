@@ -1,6 +1,3 @@
-" User's Neovim configuration path (e.g. ~/.config/nvim):
-let g:nvim_path = split(&runtimepath, ',')[0]
-
 " Load the configuration:
 execute 'source ' . g:nvim_path . '/prelude.vim'
 execute 'source ' . g:nvim_path . '/plugins.vim'
