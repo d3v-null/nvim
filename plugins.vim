@@ -1,4 +1,3 @@
-scriptencoding utf-8
 " Config for plugins & Themes
 
 " Command to update plugins & vim-plug:
