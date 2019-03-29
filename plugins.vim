@@ -63,6 +63,10 @@ Plug 'tpope/vim-endwise'
 " Use different paren management for clojure
 Plug 'kovisoft/paredit'
 
+" Use mappings for s-expressions
+" Plug 'tpope/vim-sexp-mappings-for-regular-people'
+" Plug 'guns/vim-sexp'
+
 " Handle surround chars like ''
 Plug 'tpope/vim-surround'
 
